@@ -1,0 +1,12 @@
+
+**/node_modules/
+**/bin/
+**/obj/
+
+
+.DS_Store
+Thumbs.db
+desktop.ini
+
+.vscode/
+.vs/
