@@ -1,0 +1,10 @@
+<label class="form-label fw-bold">{{title}}</label>
+<select class="form-select shadow-sm" (change)="detectEvent($event)">
+    <option value="all" selected>All Products</option>
+
+    @for (option of data; track option.id) {
+        <option [value]="option.id">{{option.name}}</option>
+    } @empty {
+        <option disabled>No Categories Found</option>
+    }
+</select>

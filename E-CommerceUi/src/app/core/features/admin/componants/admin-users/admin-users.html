@@ -1,0 +1,62 @@
+<div class="container mt-5 pt-4">
+  <div class="card border-0 shadow-sm p-4" *ngIf="!loading">
+    <h3 class="fw-bold mb-4 text-dark">
+      <i class="fa fa-users-cog me-2 text-danger"></i>User Management
+    </h3>
+    <div class="table-responsive">
+      <table class="table align-middle">
+        <thead>
+          <tr class="text-muted">
+            <th>User Info</th>
+            <th>Email Address</th>
+            <th>Role Assignment</th>
+            <th class="text-center">Account Control</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (u of users; track u.id) {
+            <tr>
+              <td>
+                <div class="d-flex align-items-center">
+                  <div
+                    class="avatar me-2 bg-danger text-white rounded-circle d-flex align-items-center justify-content-center shadow-sm"
+                    style="width: 35px; height: 35px; font-size: 0.9rem"
+                  >
+                    {{ u.fullName[0] }}
+                  </div>
+                  <span class="fw-bold">{{ u.fullName }}</span>
+                </div>
+              </td>
+              <td class="text-muted small">{{ u.email }}</td>
+              <td>
+                <select
+                  class="form-select form-select-sm w-auto shadow-sm"
+                  (change)="changeRole(u.id, $event)"
+                >
+                  @for (role of roles; track role) {
+                    <option [value]="role" [selected]="u.roles && u.roles.includes(role)">
+                      {{ role }}
+                    </option>
+                  }
+                </select>
+              </td>
+              <td class="text-center">
+                <button
+                  (click)="toggleBlock(u)"
+                  [class]="
+                    u.isBlocked
+                      ? 'btn btn-sm btn-success px-4 rounded-pill'
+                      : 'btn btn-sm btn-outline-danger px-4 rounded-pill'
+                  "
+                >
+                  <i [class]="u.isBlocked ? 'fa fa-unlock me-1' : 'fa fa-user-slash me-1'"></i>
+                  {{ u.isBlocked ? 'Unblock' : 'Block' }}
+                </button>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

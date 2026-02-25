@@ -1,0 +1,23 @@
+.order-list-card {
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
+}
+
+.order-list-card:hover {
+  transform: translateY(-3px);
+  border-color: #dc354544;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08) !important;
+}
+
+.bg-light-danger {
+  background-color: #fff5f5;
+}
+
+.badge {
+  font-weight: 500;
+  letter-spacing: 0.3px;
+}
+
+.bg-soft-danger {
+  background-color: #fff5f5 !important;
+}

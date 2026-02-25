@@ -1,0 +1,90 @@
+/* خلفية الصفحة العامة */
+.bg-soft {
+  background-color: #f4f7f6;
+}
+
+.login-card {
+  max-width: 1000px;
+  width: 100%;
+  border-radius: 24px;
+  min-height: 600px;
+}
+
+/* حاوية الصورة */
+.side-image-container {
+  overflow: hidden;
+  height: 600px; /* نفس ارتفاع الكارد */
+}
+
+.login-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+/* تعديل الـ Overlay ليظهر الصورة بوضوح */
+.overlay-text {
+  position: relative;
+  z-index: 2;
+  /* تدرج من الأسود الشفاف للشفاف تماماً ليبرز النص فقط */
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 60%);
+}
+
+.content-box {
+  margin-bottom: 20px;
+}
+
+/* تنسيق المدخلات */
+.custom-input {
+  background-color: #f8f9fa !important;
+  border: 1px solid #e9ecef !important;
+  font-size: 0.9rem;
+}
+
+.custom-input:focus {
+  background-color: #fff !important;
+  border-color: #212529 !important;
+  box-shadow: none !important;
+}
+
+.custom-input-btn {
+  border-left: none !important;
+  background-color: #f8f9fa !important;
+}
+
+/* زر الدخول - خليته Dark ليناسب أي صورة */
+.login-btn {
+  border-radius: 10px;
+  background-color: #212529;
+  border: none;
+  transition: all 0.3s ease;
+}
+
+.login-btn:hover:not(:disabled) {
+  background-color: #000;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.forgot-link {
+  font-weight: 600;
+  color: #495057;
+}
+
+.forgot-link:hover {
+  color: #000;
+}
+
+.opacity-90 {
+  opacity: 0.9;
+}
+
+@media (max-width: 991px) {
+  .login-card {
+    max-width: 450px;
+  }
+}

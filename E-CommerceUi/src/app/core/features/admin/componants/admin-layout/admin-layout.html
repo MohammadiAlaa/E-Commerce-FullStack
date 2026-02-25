@@ -1,0 +1,96 @@
+<div class="d-flex" id="wrapper">
+  <div
+    class="bg-dark text-white shadow"
+    id="sidebar-wrapper"
+    [class.collapsed]="isSidebarCollapsed"
+  >
+    <div class="sidebar-heading text-center py-4 fs-4 fw-bold border-bottom border-secondary">
+      <i class="fa fa-shopping-bag text-danger me-2"></i>
+      <span *ngIf="!isSidebarCollapsed">{{ isAdmin ? 'Admin Panel' : 'Driver Portal' }}</span>
+    </div>
+
+    <div class="list-group list-group-flush mt-3 flex-grow-1">
+      @if (isAdmin) {
+        <a
+          routerLink="/admin/dashboard"
+          routerLinkActive="active-link"
+          class="list-group-item list-group-item-action bg-dark text-white border-0 py-3"
+        >
+          <i class="fa fa-tachometer-alt me-3"></i
+          ><span *ngIf="!isSidebarCollapsed">Dashboard</span>
+        </a>
+        <a
+          routerLink="/admin/products"
+          routerLinkActive="active-link"
+          class="list-group-item list-group-item-action bg-dark text-white border-0 py-3"
+        >
+          <i class="fa fa-box me-3"></i><span *ngIf="!isSidebarCollapsed">Products</span>
+        </a>
+        <a
+          routerLink="/admin/categories"
+          routerLinkActive="active-link"
+          class="list-group-item list-group-item-action bg-dark text-white border-0 py-3"
+        >
+          <i class="fa fa-tags me-3"></i><span *ngIf="!isSidebarCollapsed">Categories</span>
+        </a>
+        <a
+          routerLink="/admin/orders"
+          routerLinkActive="active-link"
+          class="list-group-item list-group-item-action bg-dark text-white border-0 py-3"
+        >
+          <i class="fa fa-truck me-3"></i><span *ngIf="!isSidebarCollapsed">All Orders</span>
+        </a>
+        <a
+          routerLink="/admin/users"
+          routerLinkActive="active-link"
+          class="list-group-item list-group-item-action bg-dark text-white border-0 py-3"
+        >
+          <i class="fa fa-users me-3"></i><span *ngIf="!isSidebarCollapsed">User Management</span>
+        </a>
+      }
+
+      @if (isDriver) {
+        <a
+          routerLink="/admin/driver-tasks"
+          routerLinkActive="active-link"
+          class="list-group-item list-group-item-action bg-dark text-white border-0 py-3"
+        >
+          <i class="fa fa-clipboard-list me-3"></i
+          ><span *ngIf="!isSidebarCollapsed">My Delivery Tasks</span>
+        </a>
+      }
+    </div>
+
+    <div class="p-3 border-top border-secondary">
+      <button (click)="logout()" class="btn btn-outline-danger w-100 btn-sm shadow-sm">
+        <i class="fa fa-sign-out-alt me-2"></i><span *ngIf="!isSidebarCollapsed">Logout</span>
+      </button>
+    </div>
+  </div>
+
+  <div id="page-content-wrapper" class="w-100 bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white py-3 px-4 shadow-sm">
+      <button class="btn btn-light border me-3" (click)="toggleSidebar()">
+        <i class="fa fa-bars"></i>
+      </button>
+      <h5 class="mb-0 fw-bold text-dark">System Management</h5>
+      <div class="ms-auto d-flex align-items-center">
+        <div class="text-end me-3 d-none d-md-block">
+          <p class="mb-0 small fw-bold text-dark">{{ userFullName }}</p>
+          <p class="mb-0 x-small text-muted text-uppercase" style="font-size: 0.7rem">
+            {{ isAdmin ? 'Administrator' : 'Delivery Representative' }}
+          </p>
+        </div>
+        <div
+          class="bg-danger text-white rounded-circle d-flex align-items-center justify-content-center shadow-sm"
+          style="width: 40px; height: 40px"
+        >
+          <i class="fa" [ngClass]="isAdmin ? 'fa-user-shield' : 'fa-truck'"></i>
+        </div>
+      </div>
+    </nav>
+    <div class="container-fluid p-4">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,60 @@
+.delivery-card {
+  border-radius: 20px;
+  overflow: hidden;
+  border-bottom: 5px solid #198754;
+  transition: all 0.3s ease-in-out;
+}
+
+.delivery-card.out-for-delivery {
+  border-bottom: 5px solid #0dcaf0;
+}
+
+.delivery-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.address-box {
+  background-color: #fcfcfc;
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid #f0f0f0;
+}
+
+.pulse-button {
+  width: 45px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 0 0 rgba(25, 135, 84, 0.7);
+  animation: pulse-green 2s infinite;
+}
+
+@keyframes pulse-green {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(25, 135, 84, 0.7);
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 10px rgba(25, 135, 84, 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(25, 135, 84, 0);
+  }
+}
+
+.bg-soft-info {
+  background-color: #e3f2fd;
+}
+
+@media (max-width: 576px) {
+  .container {
+    padding: 15px;
+  }
+  .h4 {
+    font-size: 1.1rem;
+  }
+}

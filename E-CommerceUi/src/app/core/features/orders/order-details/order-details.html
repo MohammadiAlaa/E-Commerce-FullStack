@@ -1,0 +1,117 @@
+<div class="container mt-5 pt-5 min-vh-100">
+  <div class="d-flex align-items-center mb-4">
+    <button class="btn btn-outline-dark me-3 rounded-circle shadow-sm" routerLink="/my-orders">
+      <i class="fa fa-arrow-left"></i>
+    </button>
+    <h2 class="fw-bold mb-0">
+      Order <span class="text-danger">#{{ order?.id }}</span>
+    </h2>
+  </div>
+
+  @if (loading) {
+    <div class="text-center my-5">
+      <app-spinner></app-spinner>
+    </div>
+  } @else if (order) {
+    <div class="row g-4 animate__animated animate__fadeIn">
+      <div class="col-lg-8">
+        @if (canConfirm) {
+          <div class="card border-0 shadow-sm mb-4 rounded-4 bg-light">
+            <div
+              class="card-body d-flex justify-content-between align-items-center py-4 flex-wrap gap-3"
+            >
+              <div>
+                <h5 class="fw-bold mb-1 text-success">Delivery Confirmation</h5>
+                <p class="mb-0 text-muted small">
+                  Only Admin or Driver can confirm delivery and cash collection.
+                </p>
+              </div>
+
+              <button
+                class="btn btn-success btn-lg rounded-pill px-4 shadow-sm fw-bold"
+                (click)="confirmCompletion()"
+                [disabled]="isProcessing"
+              >
+                <i class="fa fa-check-double me-2" *ngIf="!isProcessing"></i>
+                <span class="spinner-border spinner-border-sm me-2" *ngIf="isProcessing"></span>
+                Confirm & Paid
+              </button>
+            </div>
+          </div>
+        }
+
+        <div class="card shadow-sm border-0 mb-4 rounded-4 overflow-hidden">
+          <div class="card-header bg-white py-3">
+            <h6 class="mb-0 fw-bold text-uppercase text-muted">Items In Order</h6>
+          </div>
+          <div class="table-responsive">
+            <table class="table align-middle mb-0">
+              <thead class="bg-light">
+                <tr>
+                  <th class="ps-4">Product</th>
+                  <th class="text-center">Price</th>
+                  <th class="text-center">Qty</th>
+                  <th class="text-end pe-4">Subtotal</th>
+                </tr>
+              </thead>
+              <tbody>
+                @for (item of order.items; track $index) {
+                  <tr>
+                    <td class="ps-4">
+                      <span class="fw-bold text-dark small">{{ item.productName }}</span>
+                    </td>
+                    <td class="text-center small">{{ item.price | number }} L.E</td>
+                    <td class="text-center">
+                      <span class="badge bg-light text-dark border">x{{ item.quantity }}</span>
+                    </td>
+                    <td class="fw-bold text-end pe-4 text-danger small">
+                      {{ item.price * item.quantity | number }} L.E
+                    </td>
+                  </tr>
+                }
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4">
+        <div class="card shadow-sm border-0 mb-4 rounded-4">
+          <div class="card-body">
+            <h6 class="fw-bold mb-3 text-muted small text-uppercase">Order Info</h6>
+            <div class="d-flex justify-content-between mb-3 align-items-center">
+              <span
+                class="badge px-3 py-2 rounded-pill"
+                [ngClass]="{
+                  'bg-warning text-dark': order.status === 'Pending',
+                  'bg-success': order.status === 'Delivered',
+                  'bg-danger': order.status === 'Cancelled',
+                }"
+              >
+                {{ order.status }}
+              </span>
+              <span class="text-muted small"
+                >Payment: <b class="text-dark">{{ order.payment?.status || 'N/A' }}</b></span
+              >
+            </div>
+            <hr />
+
+            <h6 class="fw-bold small text-muted text-uppercase mb-2">Shipping Details</h6>
+            <p class="small mb-1 fw-bold">{{ order.shipping?.address }}</p>
+            <p class="small text-muted mb-0">{{ order.shipping?.city }}</p>
+            <p class="small text-muted">
+              <i class="fa fa-phone me-1"></i> {{ order.shipping?.receiverPhoneNumber }}
+            </p>
+          </div>
+        </div>
+
+        <div class="card shadow-sm border-0 bg-dark text-white rounded-4 overflow-hidden">
+          <div class="card-body p-4 text-center">
+            <p class="text-secondary small mb-1 text-uppercase">Total Amount to Collect</p>
+            <h2 class="text-danger fw-bold mb-0">{{ finalTotal | number }} L.E</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  }
+</div>

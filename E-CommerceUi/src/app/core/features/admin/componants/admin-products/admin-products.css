@@ -1,0 +1,53 @@
+.container {
+  max-width: 1200px;
+}
+
+.table img {
+  border: 2px solid #f8f9fa;
+  transition: transform 0.2s;
+}
+
+.table img:hover {
+  transform: scale(1.5);
+  cursor: zoom-in;
+}
+
+.badge {
+  font-weight: 500;
+  padding: 0.5em 0.8em;
+}
+
+/* تصميم المودال */
+.modal-content {
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.modal-header {
+  border-bottom: none;
+  padding: 25px;
+}
+
+.form-control,
+.form-select {
+  border-radius: 10px;
+  padding: 10px 15px;
+  border: 1px solid #e0e0e0;
+}
+
+.form-control:focus {
+  box-shadow: 0 0 0 0.25rem rgba(220, 53, 69, 0.1);
+  border-color: #dc3545;
+}
+
+.btn-danger {
+  background-color: #dc3545;
+  border: none;
+  transition: all 0.3s;
+}
+
+.btn-danger:hover {
+  background-color: #bb2d3b;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(220, 53, 69, 0.3);
+}

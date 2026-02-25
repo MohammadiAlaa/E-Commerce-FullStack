@@ -1,0 +1,32 @@
+#wrapper {
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+#sidebar-wrapper {
+  min-height: 100vh;
+  width: 260px;
+  transition: all 0.3s ease;
+}
+
+#sidebar-wrapper.collapsed {
+  width: 80px;
+}
+
+#sidebar-wrapper.collapsed .sidebar-heading,
+#sidebar-wrapper.collapsed .list-group-item span {
+  display: none;
+}
+
+.active-link {
+  background-color: #dc3545 !important;
+  border-left: 4px solid white !important;
+}
+
+.list-group-item:hover {
+  background-color: #343a40 !important;
+}
+
+.x-small {
+  font-size: 0.75rem;
+}

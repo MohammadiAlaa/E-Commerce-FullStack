@@ -1,0 +1,25 @@
+.box {
+  background-color: #f8f9fa;
+  padding-bottom: 50px;
+}
+
+.filter-section {
+  transition: all 0.3s ease;
+  border: 1px solid #eee !important;
+}
+
+.product-wrapper {
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  border: 1px solid transparent;
+}
+
+.product-wrapper:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1) !important;
+  border-color: #dc3545;
+}
+
+app-productc {
+  display: block;
+  height: 100%;
+}

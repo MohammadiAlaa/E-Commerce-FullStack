@@ -1,0 +1,102 @@
+<div
+  class="container-fluid min-vh-100 d-flex align-items-center justify-content-center py-5 bg-soft"
+>
+  <div class="card shadow-lg border-0 overflow-hidden login-card">
+    <div class="row g-0">
+      <div class="col-lg-6 d-none d-lg-block position-relative side-image-container">
+        <div class="overlay-text d-flex flex-column justify-content-end p-5 text-white h-100">
+          <div class="content-box">
+            <h1 class="display-5 fw-bold mb-3">
+              Welcome to <br />
+              Our Store
+            </h1>
+            <p class="lead opacity-90">
+              Discover a curated collection of premium products. Experience seamless shopping with
+              high-quality service and exclusive deals.
+            </p>
+          </div>
+        </div>
+        <img src="/loginimge.jpg" class="login-image" alt="Store Image" />
+      </div>
+
+      <div class="col-lg-6 bg-white p-4 p-md-5 d-flex flex-column justify-content-center">
+        <div class="text-center mb-4 d-lg-none">
+          <h2 class="fw-bold text-dark">Login</h2>
+        </div>
+
+        <div class="mb-4">
+          <h3 class="fw-bold text-dark mb-1">Sign In</h3>
+          <p class="text-muted small">Enter your credentials to manage your orders.</p>
+        </div>
+
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+          <div class="mb-3">
+            <label class="form-label fw-bold small text-secondary">Email Address</label>
+            <input
+              type="email"
+              formControlName="email"
+              class="form-control form-control-lg custom-input"
+              placeholder="name@mail.com"
+              [class.is-invalid]="
+                loginForm.get('email')?.invalid && loginForm.get('email')?.touched
+              "
+            />
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label fw-bold small text-secondary">Password</label>
+            <div class="input-group">
+              <input
+                [type]="showPassword ? 'text' : 'password'"
+                formControlName="password"
+                class="form-control form-control-lg custom-input border-end-0"
+                placeholder="************"
+                [class.is-invalid]="
+                  loginForm.get('password')?.invalid && loginForm.get('password')?.touched
+                "
+              />
+              <button
+                class="btn btn-outline-light border custom-input-btn px-3 text-muted"
+                type="button"
+                (click)="togglePassword()"
+              >
+                <i class="fa" [ngClass]="showPassword ? 'fa-eye-slash' : 'fa-eye'"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="d-flex justify-content-between align-items-center mb-4">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="rememberMe" />
+              <label class="form-check-label small text-muted" for="rememberMe">Remember me</label>
+            </div>
+            <a routerLink="/forgot-password" class="forgot-link text-decoration-none small"
+              >Forgot password?</a
+            >
+          </div>
+
+          <button
+            type="submit"
+            [disabled]="loginForm.invalid || loading"
+            class="btn btn-dark w-100 py-3 fw-bold shadow login-btn mb-3"
+          >
+            @if (loading) {
+              <span class="spinner-border spinner-border-sm me-2"></span> Checking...
+            } @else {
+              Log In
+            }
+          </button>
+
+          <div class="text-center mt-4">
+            <p class="mb-0 text-muted small">
+              New here?
+              <a routerLink="/register" class="text-dark text-decoration-none fw-bold"
+                >Create an account</a
+              >
+            </p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

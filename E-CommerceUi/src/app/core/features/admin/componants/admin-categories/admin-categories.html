@@ -1,0 +1,106 @@
+<div class="container mt-5 pt-5">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h2 class="fw-bold">Manage Categories</h2>
+    <button
+      class="btn btn-primary rounded-pill px-4"
+      (click)="openAddModal()"
+      data-bs-toggle="modal"
+      data-bs-target="#categoryModal"
+    >
+      <i class="fa fa-plus me-2"></i>Add New Category
+    </button>
+  </div>
+
+  <div class="card border-0 shadow-sm p-4">
+    <div class="table-responsive">
+      <table class="table table-hover align-middle">
+        <thead class="bg-light">
+          <tr>
+            <th style="width: 80px">#</th>
+            <th>Category Name</th>
+            <th class="text-center" style="width: 150px">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (cat of categories; track cat.id; let i = $index) {
+            <tr>
+              <td class="text-muted">{{ i + 1 }}</td>
+              <td class="fw-bold text-dark">{{ cat.name }}</td>
+              <td class="text-center">
+                <button
+                  class="btn btn-sm btn-outline-primary border-0 me-2"
+                  (click)="openEditModal(cat)"
+                  data-bs-toggle="modal"
+                  data-bs-target="#categoryModal"
+                  title="Edit"
+                >
+                  <i class="fa fa-edit"></i>
+                </button>
+                <button
+                  class="btn btn-sm btn-outline-danger border-0"
+                  (click)="deleteCategory(cat.id)"
+                  title="Delete"
+                >
+                  <i class="fa fa-trash"></i>
+                </button>
+              </td>
+            </tr>
+          } @empty {
+            <tr>
+              <td colspan="3" class="text-center py-5 text-muted">
+                <i class="fa fa-folder-open fa-3x mb-3 d-block opacity-25"></i>
+                No categories found.
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="categoryModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content shadow border-0">
+      <div class="modal-header bg-light">
+        <h5 class="modal-title fw-bold">
+          @if (isEditMode) {
+            <i class="fa fa-edit me-2 text-primary"></i>Edit
+          } @else {
+            <i class="fa fa-plus me-2 text-success"></i>Add
+          }
+          Category
+        </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" id="closeCatModal"></button>
+      </div>
+      <div class="modal-body p-4">
+        <form [formGroup]="categoryForm" (ngSubmit)="saveCategory()">
+          <div class="mb-4">
+            <label class="form-label fw-bold small text-uppercase">Category Name</label>
+            <input
+              type="text"
+              class="form-control form-control-lg bg-light border-0"
+              formControlName="name"
+              placeholder="e.g. Electronics, Furniture..."
+            />
+            @if (categoryForm.get('name')?.invalid && categoryForm.get('name')?.touched) {
+              <small class="text-danger mt-1 d-block">Name is required</small>
+            }
+          </div>
+          <div class="modal-footer px-0 pb-0 border-0">
+            <button type="button" class="btn btn-light rounded-pill px-4" data-bs-dismiss="modal">
+              Cancel
+            </button>
+            <button
+              type="submit"
+              class="btn btn-primary rounded-pill px-4 shadow-sm"
+              [disabled]="categoryForm.invalid"
+            >
+              {{ isEditMode ? 'Update' : 'Create' }} Category
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

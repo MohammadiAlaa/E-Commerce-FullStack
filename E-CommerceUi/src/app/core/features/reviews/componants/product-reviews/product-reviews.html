@@ -1,0 +1,59 @@
+<div class="reviews-section mt-5">
+  <h4 class="fw-bold mb-4">Reviews ({{reviews.length}})</h4>
+
+  <div class="review-list mb-5">
+    @for (review of reviews; track review.id) {
+      <div class="card border-0 border-bottom rounded-0 mb-3 pb-3">
+        <div class="d-flex justify-content-between align-items-start">
+          <div class="d-flex gap-3">
+            <div class="avatar-circle bg-danger text-white">{{ (review.user?.userName?.[0] || 'C').toUpperCase() }}</div>
+            <div>
+              <div class="text-warning small mb-1">
+                @for (star of getStars(review.rating); track $index) { <i class="fa fa-star"></i> }
+              </div>
+              <p class="mb-0 fw-bold">{{review.user?.userName || 'Customer'}}</p>
+              <p class="text-muted small">{{review.comment}}</p>
+            </div>
+          </div>
+
+          <div class="text-end">
+            <span class="text-muted x-small d-block mb-2">{{review.createdAt | date:'mediumDate'}}</span>
+            @if (review.userId === currentUserId) {
+              <div class="btn-group shadow-sm rounded">
+                <button (click)="editReview(review)" class="btn btn-sm btn-white border text-primary"><i class="fa fa-edit"></i></button>
+                <button (click)="deleteReview(review.id!)" class="btn btn-sm btn-white border text-danger"><i class="fa fa-trash"></i></button>
+              </div>
+            }
+          </div>
+        </div>
+      </div>
+    } @empty {
+      <div class="text-center py-4 bg-light rounded-4">
+        <i class="fa fa-comments fa-2x text-muted mb-2"></i>
+        <p class="text-muted mb-0">No reviews yet. Share your thoughts!</p>
+      </div>
+    }
+  </div>
+
+  <div class="add-review-card card shadow-sm border-0 p-4">
+    <h5 class="fw-bold mb-3">{{ editingReviewId ? 'Edit Review' : 'Add your Review' }}</h5>
+    <div class="mb-3">
+      <select class="form-select border-light bg-light" [(ngModel)]="newReview.rating">
+        <option [value]="5">⭐⭐⭐⭐⭐ (5/5)</option>
+        <option [value]="4">⭐⭐⭐⭐ (4/5)</option>
+        <option [value]="3">⭐⭐⭐ (3/5)</option>
+        <option [value]="2">⭐⭐ (2/5)</option>
+        <option [value]="1">⭐ (1/5)</option>
+      </select>
+    </div>
+    <div class="mb-3">
+      <textarea class="form-control border-light bg-light" [(ngModel)]="newReview.comment" rows="3" placeholder="What did you think of the product?"></textarea>
+    </div>
+    <div class="d-flex gap-2">
+      <button class="btn btn-danger px-4 rounded-pill fw-bold shadow-sm" (click)="submitReview()">
+        {{ editingReviewId ? 'Update' : 'Post' }} Review
+      </button>
+      <button *ngIf="editingReviewId" (click)="cancelEdit()" class="btn btn-light px-4 rounded-pill">Cancel</button>
+    </div>
+  </div>
+</div>

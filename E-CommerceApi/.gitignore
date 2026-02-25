@@ -1,0 +1,15 @@
+appsettings.json
+appsettings.Development.json
+usersecrets.json
+
+bin/
+obj/
+publish/
+
+.vs/
+*.user
+*.suo
+
+*.mdf
+*.ldf
+*.db

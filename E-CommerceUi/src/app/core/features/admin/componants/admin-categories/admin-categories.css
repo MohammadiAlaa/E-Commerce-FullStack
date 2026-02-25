@@ -1,0 +1,37 @@
+.card {
+    border-radius: 15px;
+}
+
+.table thead th {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+    padding: 15px;
+}
+
+.table tbody td {
+    padding: 15px;
+    font-size: 0.95rem;
+}
+
+.btn-outline-primary:hover, .btn-outline-danger:hover {
+    color: white !important;
+}
+
+.modal-content {
+    border-radius: 20px;
+    border: none;
+}
+
+.modal-header {
+    background-color: #212529;
+    color: white;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+.form-control:focus {
+    box-shadow: none;
+    border-color: #dc3545;
+}

@@ -1,0 +1,124 @@
+<div
+  class="container-fluid min-vh-100 d-flex align-items-center justify-content-center py-5 bg-soft"
+>
+  <div class="card shadow-lg border-0 overflow-hidden register-card">
+    <div class="row g-0">
+      <div class="col-lg-5 d-none d-lg-block position-relative side-image-container">
+        <div class="overlay-text d-flex flex-column justify-content-end p-5 text-white h-100">
+          <div class="content-box">
+            <h1 class="display-5 fw-bold mb-3">
+              Join our <br />
+              Family
+            </h1>
+            <p class="lead opacity-90">
+              Create your account to enjoy a faster checkout process, track your orders, and receive
+              our latest updates and offers.
+            </p>
+          </div>
+        </div>
+        <img src="/loginimge.jpg" class="register-image" alt="Registration Image" />
+      </div>
+
+      <div class="col-lg-7 bg-white p-4 p-md-5">
+        <div class="mb-4">
+          <h3 class="fw-bold text-dark mb-1">Create Account</h3>
+          <p class="text-muted small">Join us today! It only takes a minute.</p>
+        </div>
+
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label class="form-label fw-bold small text-secondary">Full Name</label>
+              <input
+                type="text"
+                formControlName="fullName"
+                class="form-control form-control-lg custom-input"
+                placeholder="Ex: Mohamed Ali"
+              />
+            </div>
+            <div class="col-md-6 mb-3">
+              <label class="form-label fw-bold small text-secondary">Email Address</label>
+              <input
+                type="email"
+                formControlName="email"
+                class="form-control form-control-lg custom-input"
+                placeholder="name@example.com"
+              />
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label fw-bold small text-secondary">Shipping Address</label>
+            <input
+              type="text"
+              formControlName="address"
+              class="form-control form-control-lg custom-input"
+              placeholder="Building, Street, City"
+            />
+          </div>
+
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label class="form-label fw-bold small text-secondary">Password</label>
+              <div class="input-group">
+                <input
+                  [type]="showPassword ? 'text' : 'password'"
+                  formControlName="password"
+                  class="form-control form-control-lg custom-input border-end-0"
+                  placeholder="********"
+                />
+                <button
+                  class="btn btn-outline-light border custom-input-btn px-3 text-muted"
+                  type="button"
+                  (click)="togglePassword()"
+                >
+                  <i class="fa" [ngClass]="showPassword ? 'fa-eye-slash' : 'fa-eye'"></i>
+                </button>
+              </div>
+            </div>
+
+            <div class="col-md-6 mb-3">
+              <label class="form-label fw-bold small text-secondary">Confirm Password</label>
+              <div class="input-group">
+                <input
+                  [type]="showConfirmPassword ? 'text' : 'password'"
+                  formControlName="confirmPassword"
+                  class="form-control form-control-lg custom-input border-end-0"
+                  placeholder="********"
+                />
+                <button
+                  class="btn btn-outline-light border custom-input-btn px-3 text-muted"
+                  type="button"
+                  (click)="toggleConfirmPassword()"
+                >
+                  <i class="fa" [ngClass]="showConfirmPassword ? 'fa-eye-slash' : 'fa-eye'"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          @if (registerForm.hasError('mismatch') && registerForm.get('confirmPassword')?.touched) {
+            <div class="alert alert-danger py-2 border-0 small mb-3 shadow-sm">
+              <i class="fa fa-exclamation-circle me-2"></i> Passwords do not match!
+            </div>
+          }
+
+          <button
+            type="submit"
+            [disabled]="registerForm.invalid"
+            class="btn btn-dark w-100 py-3 fw-bold shadow register-btn mt-2 mb-3"
+          >
+            Get Started
+          </button>
+
+          <div class="text-center mt-4">
+            <p class="mb-0 text-muted small">
+              Already have an account?
+              <a routerLink="/login" class="text-dark text-decoration-none fw-bold">Sign In</a>
+            </p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

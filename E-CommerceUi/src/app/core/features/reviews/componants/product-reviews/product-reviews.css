@@ -1,0 +1,33 @@
+.x-small {
+  font-size: 0.7rem;
+}
+.text-warning {
+  color: #ffc107 !important;
+}
+.add-review-card {
+  border-radius: 20px;
+  background: #ffffff;
+  border-top: 4px solid #dc3545 !important;
+}
+.avatar-circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+.form-select,
+.form-control {
+  border-radius: 12px;
+  padding: 10px 15px;
+  border: 2px solid transparent !important;
+}
+.form-select:focus,
+.form-control:focus {
+  background: #fff !important;
+  border-color: #dc354533 !important;
+  box-shadow: none;
+}

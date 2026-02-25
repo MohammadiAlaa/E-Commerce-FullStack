@@ -1,0 +1,46 @@
+.action-card {
+  background: linear-gradient(135deg, #fafffa 0%, #f0fff4 100%);
+  border-left: 5px solid #198754 !important;
+}
+
+.total-card-bg {
+  background: linear-gradient(145deg, #212529, #343a40);
+}
+
+.order-list-card {
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+  border: 1px solid #f0f0f0;
+}
+
+.order-list-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1) !important;
+}
+
+.bg-soft-danger {
+  background-color: #fff5f5;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.table thead th {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-bottom: none;
+}

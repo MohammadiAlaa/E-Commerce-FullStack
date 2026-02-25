@@ -1,0 +1,53 @@
+.card {
+  border-radius: 15px;
+  background-color: #fff;
+}
+
+.table thead th {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  color: #8898aa;
+  border-bottom: 1px solid #ebf1f6;
+  padding: 1rem;
+}
+
+.table tbody td {
+  padding: 1rem;
+  font-size: 0.9rem;
+}
+
+.form-select-sm {
+  font-size: 0.85rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.form-select-sm:hover {
+  background-color: #e9ecef !important;
+}
+
+.badge {
+  font-weight: 500;
+  font-size: 0.75rem;
+  letter-spacing: 0.3px;
+}
+
+.btn-outline-info {
+  border: 1px solid #0dcaf0;
+  color: #0dcaf0;
+}
+
+.btn-outline-info:hover {
+  background-color: #0dcaf0;
+  color: white;
+}
+
+tr {
+  transition: background-color 0.3s;
+}
+
+tr:hover {
+  background-color: #fcfcfc;
+}

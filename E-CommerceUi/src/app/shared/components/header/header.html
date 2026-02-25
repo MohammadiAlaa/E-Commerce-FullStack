@@ -1,0 +1,114 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm fixed-top custom-navbar">
+  <div class="container">
+    <a class="navbar-brand fw-bold" routerLink="/">
+      <i class="fa fa-cart-shopping me-2 text-warning"></i>E-Commerce
+    </a>
+
+    <button
+      class="navbar-toggler border-0"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNav"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto align-items-center">
+        @if (isLoggedIn) {
+          @if (isAdmin) {
+            <li class="nav-item">
+              <a
+                class="nav-link px-3 text-warning fw-bold"
+                routerLink="/admin/dashboard"
+                routerLinkActive="active"
+                >Dashboard</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link px-3" routerLink="/admin/products" routerLinkActive="active"
+                >Manage Products</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link px-3" routerLink="/admin/users" routerLinkActive="active">Users</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link px-3" routerLink="/admin/orders" routerLinkActive="active"
+                >Orders</a
+              >
+            </li>
+          }
+
+          @if (isDriver) {
+            <li class="nav-item">
+              <a
+                class="nav-link px-3 text-info fw-bold"
+                routerLink="/admin/driver-tasks"
+                routerLinkActive="active"
+              >
+                My Deliveries
+              </a>
+            </li>
+          }
+
+          @if (isCustomer) {
+            <li class="nav-item">
+              <a class="nav-link px-3" routerLink="/products" routerLinkActive="active">Shop</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link px-3" routerLink="/my-orders" routerLinkActive="active"
+                >My Orders</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link px-3 position-relative"
+                routerLink="/carts"
+                routerLinkActive="active"
+              >
+                <i class="fa fa-shopping-cart fs-5"></i>
+                @if (cartCount$ | async; as count) {
+                  @if (count > 0) {
+                    <span
+                      class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+                      style="font-size: 0.7rem"
+                    >
+                      {{ count }}
+                    </span>
+                  }
+                }
+              </a>
+            </li>
+          }
+
+          <li class="nav-item ms-lg-4 border-start ps-lg-3">
+            <div class="d-flex align-items-center">
+              <button
+                class="btn btn-outline-light btn-sm rounded-pill px-3 me-2"
+                (click)="onLogout()"
+              >
+                <i class="fa fa-power-off me-1"></i> Logout
+              </button>
+              <button
+                class="btn btn-link text-danger btn-sm p-0"
+                (click)="confirmDelete()"
+                title="Delete Profile"
+              >
+                <i class="fa fa-trash-can fs-5"></i>
+              </button>
+            </div>
+          </li>
+        } @else {
+          <li class="nav-item ms-lg-3">
+            <a
+              class="btn btn-warning btn-sm rounded-pill px-4 fw-bold shadow-sm"
+              routerLink="/login"
+              >Login</a
+            >
+          </li>
+        }
+      </ul>
+    </div>
+  </div>
+</nav>
