@@ -16,7 +16,7 @@ import { CartService } from '../../../cart/services/cart.service';
   styleUrl: './product-details.css',
 })
 export class ProductDetails implements OnInit {
-  id!: number; // خليها number
+  id!: number; 
   data: any = {};
   loading: boolean = false;
   amount: number = 1;

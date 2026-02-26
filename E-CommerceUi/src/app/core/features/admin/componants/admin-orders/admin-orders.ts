@@ -85,22 +85,15 @@ export class AdminOrders implements OnInit {
       Swal.fire({
         title: 'Cancel Order',
         input: 'textarea',
-
         inputLabel: 'Reason for cancellation',
-
         inputPlaceholder: 'Enter why this order is cancelled...',
-
         showCancelButton: true,
-
         confirmButtonColor: '#dc3545',
-
         confirmButtonText: 'Confirm Cancellation',
-
         preConfirm: (value) => {
           if (!value) {
             Swal.showValidationMessage('Reason is required!');
           }
-
           return value;
         },
       }).then((result) => {
@@ -119,15 +112,12 @@ export class AdminOrders implements OnInit {
     this.adminService.updateShippingStatus(id, status, reason).subscribe({
       next: () => {
         Swal.fire('Updated!', `Order is now ${status}`, 'success');
-
         this.loadShippings();
-
         this.cdr.detectChanges();
       },
 
       error: (err) => {
         Swal.fire('Error', err.error || 'Update failed', 'error');
-
         this.loadShippings();
       },
     });
@@ -136,11 +126,8 @@ export class AdminOrders implements OnInit {
   viewCancelReason(reason: string) {
     Swal.fire({
       title: 'Cancellation Reason',
-
       text: reason,
-
       icon: 'warning',
-
       confirmButtonColor: '#dc3545',
     });
   }

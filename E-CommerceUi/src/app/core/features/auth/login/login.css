@@ -10,10 +10,9 @@
   min-height: 600px;
 }
 
-/* حاوية الصورة */
 .side-image-container {
   overflow: hidden;
-  height: 600px; /* نفس ارتفاع الكارد */
+  height: 600px;
 }
 
 .login-image {
@@ -26,11 +25,9 @@
   z-index: 1;
 }
 
-/* تعديل الـ Overlay ليظهر الصورة بوضوح */
 .overlay-text {
   position: relative;
   z-index: 2;
-  /* تدرج من الأسود الشفاف للشفاف تماماً ليبرز النص فقط */
   background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 60%);
 }
 
@@ -38,7 +35,6 @@
   margin-bottom: 20px;
 }
 
-/* تنسيق المدخلات */
 .custom-input {
   background-color: #f8f9fa !important;
   border: 1px solid #e9ecef !important;
@@ -56,7 +52,6 @@
   background-color: #f8f9fa !important;
 }
 
-/* زر الدخول - خليته Dark ليناسب أي صورة */
 .login-btn {
   border-radius: 10px;
   background-color: #212529;

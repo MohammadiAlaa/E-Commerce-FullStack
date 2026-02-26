@@ -44,7 +44,7 @@ export class Checkout implements OnInit {
         '',
         [Validators.required, Validators.pattern('^01[0-2,5]{1}[0-9]{8}$')],
       ],
-      paymentMethod: ['Cash', Validators.required], // تم تفعيل الكاش افتراضياً
+      paymentMethod: ['Cash', Validators.required], 
     });
   }
 
