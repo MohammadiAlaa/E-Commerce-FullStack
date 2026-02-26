@@ -74,7 +74,6 @@ The API is built with focus on scalability and clean code principles:
 1. Go to `E-CommerceUi`.
 2. Execute `npm install`.
 3. Start the server with `ng serve`.
-4. Access the app at `http://localhost:4200`.
 
 ---
 
